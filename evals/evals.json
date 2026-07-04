@@ -1,0 +1,33 @@
+{
+  "skill_name": "swift-midi",
+  "evals": [
+    {
+      "id": 0,
+      "name": "cc-mapping-midi-learn",
+      "prompt": "I'm building a SwiftUI synth app for macOS 14. I have an Arturia MiniLab plugged in and I want to map its knobs to my synth's filter cutoff and resonance parameters (they're normalized 0.0-1.0 Doubles on my SynthEngine class). I also want a 'MIDI learn' button so users can assign any hardware knob to any parameter. Write the MIDI manager class for this.",
+      "expected_output": "A Swift class using SwiftMIDIIO (not MIDIKit) with an input connection to hardware outputs, CC events read via unitIntervalValue, results funneled to the main actor, and a learn-mode flag that captures the next CC number.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "hotplug-reconnect",
+      "prompt": "my swift app stops receiving midi when i unplug and replug my keyboard. i'm using orchetect's midi library. right now I tear down the connection and rebuild it in a notification handler but it's flaky. what's the right way to handle usb midi devices coming and going?",
+      "expected_output": "Explains that managed connections auto-reconnect, so the teardown/rebuild dance should be deleted; notifications are only for refreshing picker UI. Uses current swift-midi (SwiftMIDIIO) naming.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "virtual-port-no-feedback",
+      "prompt": "I want my Mac music app (Swift, sandboxed, macOS 14) to expose a virtual MIDI input port called 'MyApp In' that other apps like Logic can send MIDI to, and I also need to receive from all connected hardware. How do I set this up so I don't receive my own virtual port's traffic?",
+      "expected_output": "addInput virtual port with .userDefaultsManaged uniqueID, plus addInputConnection(to: .allOutputs) with filter: .owned() to exclude the app's own virtual endpoints.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "sandbox-error-50",
+      "prompt": "why is my sandboxed mac app getting error -50 from CoreMIDI when it tries to open a midi device? works fine in the non-sandboxed debug build. using swift",
+      "expected_output": "Identifies the two documented causes: manager not start()ed before use, and (given sandboxed-only failure) the missing com.apple.security.device.usb entitlement.",
+      "files": []
+    }
+  ]
+}

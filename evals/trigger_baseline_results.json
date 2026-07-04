@@ -1,0 +1,132 @@
+{
+  "summary": {
+    "accuracy": 0.95,
+    "precision": 0.9091,
+    "recall": 1.0,
+    "correct": 19,
+    "total": 20,
+    "description": "(current)"
+  },
+  "results": [
+    {
+      "query": "hook up my akai mpk mini to my swiftui app so the pads trigger drum samples",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "passed": true
+    },
+    {
+      "query": "I'm building a synth app for macOS 14 in Swift. How do I add MIDI learn so users can map any knob on their controller to filter cutoff and resonance?",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "passed": true
+    },
+    {
+      "query": "my swiftui app needs to send midi clock at 120bpm to external hardware. I'm using MIDIKit. how do I do this?",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "passed": true
+    },
+    {
+      "query": "create a virtual midi port in my mac app that ableton and logic can see and send notes to",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "passed": true
+    },
+    {
+      "query": "why does my sandboxed mac app get error -50 from coremidi when opening devices? works fine unsandboxed. do I need an entitlement?",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "passed": true
+    },
+    {
+      "query": "app stops getting midi events after i unplug and replug my keyboard \u2014 swift, using orchetect's library. tearing down and rebuilding the connection is flaky",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "passed": true
+    },
+    {
+      "query": "how do I receive pitch bend and channel aftertouch in my iOS app, and keep receiving MIDI while the app is in the background?",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "passed": true
+    },
+    {
+      "query": "I need bluetooth midi pairing UI in my iphone app \u2014 users want to connect a roland go:keys wirelessly",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "passed": true
+    },
+    {
+      "query": "im getting doubled/looped note events in my swift app because my own virtual output feeds back into my input connection. how do i exclude my own ports?",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "passed": true
+    },
+    {
+      "query": "sync my mac drum machine app's tempo to incoming midi clock from an MPC One \u2014 need BPM detection and song position in Swift",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "passed": true
+    },
+    {
+      "query": "parse a .mid file in python and extract all the tempo changes into a CSV",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "passed": true
+    },
+    {
+      "query": "route audio from my AVAudioEngine mixer node to bluetooth headphones in my swift app \u2014 output device keeps switching back to speakers",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "passed": true
+    },
+    {
+      "query": "my Web MIDI API code can't see my keyboard in chrome, navigator.requestMIDIAccess resolves but inputs is empty",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "passed": true
+    },
+    {
+      "query": "build an AUv3 audio unit plugin in swift that adds a reverb effect to the host's audio",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "passed": true
+    },
+    {
+      "query": "read button presses from a USB HID footswitch in my mac swift app (it's not a keyboard, it's a custom pedal)",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "passed": true
+    },
+    {
+      "query": "convert a bunch of midi files to mp3 on my linux server with fluidsynth and a soundfont",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "passed": true
+    },
+    {
+      "query": "what's the difference between the MIDI 1.0 and MIDI 2.0 protocols? just trying to understand UMP conceptually",
+      "should_trigger": false,
+      "trigger_rate": 0.6666666666666666,
+      "passed": false
+    },
+    {
+      "query": "add an on-screen piano keyboard view to my swiftui app that plays built-in samples with AVAudioEngine when tapped",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "passed": true
+    },
+    {
+      "query": "my electron app needs to list midi devices using node-midi but it crashes on macos sonoma",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "passed": true
+    },
+    {
+      "query": "transcribe this mp3 recording of a piano piece into sheet music / musicxml",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "passed": true
+    }
+  ]
+}

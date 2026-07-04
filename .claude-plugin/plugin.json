@@ -1,0 +1,12 @@
+{
+  "name": "swift-midi",
+  "description": "Verified knowledge of orchetect's swift-midi package family (the successor to MIDIKit) for writing MIDI code in Swift apps — device I/O, virtual endpoints, CC/note/transport events, MIDI learn, clock sync, network/Bluetooth MIDI, and sandbox entitlements",
+  "version": "1.0.0",
+  "author": {
+    "name": "Matthew Schultz"
+  },
+  "homepage": "https://github.com/matthewjschultz/mjs-claude-skill-swift-midi",
+  "repository": "https://github.com/matthewjschultz/mjs-claude-skill-swift-midi",
+  "license": "MIT",
+  "keywords": ["midi", "swift", "swiftui", "swift-midi", "midikit", "coremidi", "music", "audio"]
+}

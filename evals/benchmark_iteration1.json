@@ -1,0 +1,390 @@
+{
+  "metadata": {
+    "skill_name": "swift-midi",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-04T02:13:49Z",
+    "evals_run": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses swift-midi family, never MIDIKit as current",
+          "passed": true,
+          "evidence": "L3-4: 'orchetect's swift-midi package family \u2014 the 2026 successor to MIDIKit. Do not import MIDIKit; that name and API are gone.'"
+        },
+        {
+          "text": "Correct receive direction (addInputConnection to outputs)",
+          "passed": true,
+          "evidence": "Uses addInputConnection; L152 comment about excluding own virtual ports on the input connection."
+        },
+        {
+          "text": "unitIntervalValue feeds normalized params",
+          "passed": true,
+          "evidence": "unitIntervalValue present; parameters are 0-1 Doubles fed directly."
+        },
+        {
+          "text": "Background-thread callback funneled to main actor",
+          "passed": true,
+          "evidence": "Main-actor funnel present (grep: @MainActor/DispatchQueue.main)."
+        },
+        {
+          "text": "MIDI learn modeled as armed mode capturing next CC",
+          "passed": true,
+          "evidence": "L103-106: learningParameterID captures next CC; isLearning drives button highlight."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Managed connections auto-reconnect; remove rebuild logic",
+          "passed": true,
+          "evidence": "L5: 'Stop tearing down and rebuilding the connection. That manual teardown/rebuild ... IS the flakiness'; L7: managed connections auto-reconnect."
+        },
+        {
+          "text": "Notifications only for picker UI, not rebuilds",
+          "passed": true,
+          "evidence": "L16: 'Use system notifications only to refresh your device-picker UI \u2014 never to rebuild the connection.'"
+        },
+        {
+          "text": "Current swift-midi naming, not MIDIKit",
+          "passed": true,
+          "evidence": "L45: 'import SwiftMIDIIO   // NOT import MIDIKit \u2014 renamed/split in April 2026'."
+        },
+        {
+          "text": "Persist uniqueID, not display name",
+          "passed": true,
+          "evidence": "L37: 'Persist the uniqueID (an Int32), never the display name.'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Virtual destination via midiManager.addInput",
+          "passed": true,
+          "evidence": "L50: try midiManager.addInput(name: \"MyApp In\" ...)."
+        },
+        {
+          "text": "uniqueID .userDefaultsManaged / Core MIDI-generated persistence",
+          "passed": true,
+          "evidence": "L53: uniqueID: .userDefaultsManaged(key: \"MyAppIn\") // persist the id, don't invent one."
+        },
+        {
+          "text": "Own virtual endpoints excluded via .owned() filter",
+          "passed": true,
+          "evidence": "L64-68: filter: .owned() '<-- excludes your own virtual ports'; L123 explains why."
+        },
+        {
+          "text": "Correct receive direction: addInputConnection(to: .allOutputs)",
+          "passed": true,
+          "evidence": "L66: to: .allOutputs on the input connection."
+        },
+        {
+          "text": "Uses swift-midi family, never MIDIKit as current",
+          "passed": true,
+          "evidence": "imports SwiftMIDIIO; MIDIKit mentioned only as former name."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Names com.apple.security.device.usb as sandbox-specific cause",
+          "passed": true,
+          "evidence": "L23-29: 'The fix \u2014 add the USB device entitlement ... com.apple.security.device.usb'."
+        },
+        {
+          "text": "Mentions start()-before-use as the other documented -50 cause",
+          "passed": true,
+          "evidence": "L17: 'before MIDIManager.start()' listed as cause 1."
+        },
+        {
+          "text": "Network MIDI needs BOTH network.client and network.server",
+          "passed": true,
+          "evidence": "L65-69: 'both com.apple.security.network.client and com.apple.security.network.server ... a common trap'."
+        },
+        {
+          "text": "No hallucinated entitlement/API as primary fix",
+          "passed": true,
+          "evidence": "All entitlements named are real sandbox keys."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.4,
+        "passed": 2,
+        "failed": 3,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses swift-midi family, never MIDIKit as current",
+          "passed": false,
+          "evidence": "L3: builds on raw CoreMIDI, no swift-midi package; no SwiftMIDIIO import."
+        },
+        {
+          "text": "Correct receive direction (addInputConnection to outputs)",
+          "passed": false,
+          "evidence": "Raw CoreMIDI input port + MIDIPortConnectSource; assertion targets the managed-connection API."
+        },
+        {
+          "text": "unitIntervalValue feeds normalized params",
+          "passed": false,
+          "evidence": "L236: 'let normalized = Double(value) / 127.0' \u2014 hand-rolled scaling."
+        },
+        {
+          "text": "Background-thread callback funneled to main actor",
+          "passed": true,
+          "evidence": "L107: 'Notify block runs on the CoreMIDI thread; bounce to main.'"
+        },
+        {
+          "text": "MIDI learn modeled as armed mode capturing next CC",
+          "passed": true,
+          "evidence": "L81-82: '@Published private(set) var learningParameter' binds next CC."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Managed connections auto-reconnect; remove rebuild logic",
+          "passed": true,
+          "evidence": "L7: managed connection 'automatically re-binds'; L177: 'Delete your notification-driven teardown/rebuild code'."
+        },
+        {
+          "text": "Notifications only for picker UI, not rebuilds",
+          "passed": true,
+          "evidence": "L150-151: '.added/.removed \u2192 refresh UI list. Do NOT rebuild connections here.'"
+        },
+        {
+          "text": "Current swift-midi naming, not MIDIKit",
+          "passed": false,
+          "evidence": "L24: 'import MIDIKitIO   // orchetect's package (MIDIKit)' \u2014 stale pre-rename naming that no longer exists."
+        },
+        {
+          "text": "Persist uniqueID, not display name",
+          "passed": false,
+          "evidence": "L7: recommends 'persistent identity (unique ID, name, or display name)' \u2014 blesses collision-prone name matching."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6,
+        "passed": 3,
+        "failed": 2,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Virtual destination via midiManager.addInput",
+          "passed": false,
+          "evidence": "L7: uses raw MIDIDestinationCreateWithProtocol, not the library API."
+        },
+        {
+          "text": "uniqueID .userDefaultsManaged / Core MIDI-generated persistence",
+          "passed": true,
+          "evidence": "L24/L50: persists a stable kMIDIPropertyUniqueID in UserDefaults across launches."
+        },
+        {
+          "text": "Own virtual endpoints excluded via .owned() filter",
+          "passed": true,
+          "evidence": "L17-20: skip any source whose uniqueID is one of yours \u2014 equivalent owned-endpoint filtering, hand-rolled."
+        },
+        {
+          "text": "Correct receive direction: addInputConnection(to: .allOutputs)",
+          "passed": true,
+          "evidence": "Direction conceptually correct: input port connected to all sources (raw CoreMIDI)."
+        },
+        {
+          "text": "Uses swift-midi family, never MIDIKit as current",
+          "passed": false,
+          "evidence": "Raw CoreMIDI throughout; no swift-midi package. Also asserts (L24) no entitlement is needed for local CoreMIDI, contradicting the shipping-app device.usb experience."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Names com.apple.security.device.usb as sandbox-specific cause",
+          "passed": false,
+          "evidence": "L79: claims basic USB CoreMIDI 'does not require a special entitlement'; device.usb only listed belt-and-suspenders (L96)."
+        },
+        {
+          "text": "Mentions start()-before-use as the other documented -50 cause",
+          "passed": false,
+          "evidence": "No mention of manager start(); diagnosis is paramErr/invalid-ref theory (L18-28)."
+        },
+        {
+          "text": "Network MIDI needs BOTH network.client and network.server",
+          "passed": true,
+          "evidence": "L100-102: lists both network.client and network.server keys."
+        },
+        {
+          "text": "No hallucinated entitlement/API as primary fix",
+          "passed": true,
+          "evidence": "Analysis uses real OSStatus semantics (paramErr, kMIDINotPermitted -10844); no invented APIs."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.5,
+        "stddev": 0.0816,
+        "min": 0.4,
+        "max": 0.6
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.50",
+      "time_seconds": "+0.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}
