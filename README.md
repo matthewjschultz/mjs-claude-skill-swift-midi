@@ -31,4 +31,4 @@ This skill documents [swift-midi](https://github.com/orchetect/swift-midi) by St
 
 ## License
 
-MIT
+MIT. See [LICENSE](LICENSE).
